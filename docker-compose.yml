@@ -1,0 +1,13 @@
+version: "2"
+services:
+  proxy:
+    build: .
+    env_file:
+      - .env
+    ports:
+      - "${CONTAINER_PORT}:${CONTAINER_PORT}"
+  ecs:
+    image: amaysim/ecs-utils:2.2.0
+    env_file: .env
+    volumes:
+      - .:/srv/app:Z

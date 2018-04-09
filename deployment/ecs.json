@@ -1,0 +1,27 @@
+{
+    "containerDefinitions": [
+        {
+            "essential": true,
+            "image": "amaysim/docker-tcp-proxy:latest",
+            "memoryReservation": 128,
+            "memory": 128,
+            "cpu": 256,
+            "name": "${ECS_APP_NAME}",
+            "portMappings": [
+                {
+                    "containerPort": "${CONTAINER_PORT}"
+                }
+            ],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "ecs-${ECS_APP_NAME}-${ENV}",
+                    "awslogs-region": "ap-southeast-2",
+                    "awslogs-stream-prefix": "${BUILD_VERSION}"
+                }
+            }
+        }
+    ],
+    "family": "${ECS_APP_NAME}-${ENV}",
+    "volumes": []
+}

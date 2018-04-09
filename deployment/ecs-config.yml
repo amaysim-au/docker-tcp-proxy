@@ -1,0 +1,13 @@
+---
+lb_type: NLB
+
+lb_health_check: /healthcheck.html
+lb_deregistration_delay: 60
+
+lb_health_port: ${HEALTH_PORT}
+lb_container_port: ${CONTAINER_PORT}
+
+autoscaling: Enable
+autoscaling_target: 60
+autoscaling_min_size: 2
+autoscaling_max_size: 20
